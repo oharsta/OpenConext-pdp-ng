@@ -4,6 +4,7 @@ import org.openconext.pdp.model.PdpAttribute;
 import org.openconext.pdp.model.RequestAttribute;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class ConditionMatcher {
@@ -18,7 +19,7 @@ public class ConditionMatcher {
         if (negated) {
             boolean anyMatch = requestValues.stream()
                     .map(RequestAttribute::value)
-                    .filter(value -> value != null)
+                    .filter(Objects::nonNull)
                     .anyMatch(value -> matchesRegex(policyValue, value));
             if (anyMatch) {
                 return null;
