@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: pdp-ng
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/pdp_ng
+
+server:
+  port: 8082
+
+policy:
+  enforcement:
+    point:
+      user:
+        name: pdp
+        password: secret
+
+pdp:
+  mongo:
+    policies-collection: policies
+    policy-version-collection: policy_push_version
+    policy-version-id: policy_push_version
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,prometheus"
